@@ -1,0 +1,11 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Auto.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Steven.Hornbogen\Downloads\Auto\.idea\.idea.Auto.dir\.idea/dataSources/
+/dataSources.local.xml
