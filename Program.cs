@@ -35,8 +35,8 @@ namespace Projekt_Autovermieten
                     continue;
                 }
 
-                if (option == 1) erstelleKunde();
-                else if (option == 2) erstelleFahrzeug();
+                if (option == 1) erstelleKunde(kunden);
+                else if (option == 2) erstelleFahrzeug(fahrzeuge);
                 else if (option == 3) kundenAnzeigen(kunden);
                 else if (option == 4) fahrzeugeAnzeigen(fahrzeuge);
                 else Console.WriteLine("Die Option {0} ist nicht bekannt!", option);
@@ -55,12 +55,12 @@ namespace Projekt_Autovermieten
         }
 
 
-        private static void erstelleFahrzeug()
+        private static void erstelleFahrzeug(List<Fahrzeug> fahrzeuge)
         {
             Console.Write("Soll das Auto ein PKW sein? (y/n) ");
             bool pkw = Console.ReadLine().ToLower().Equals("y"); 
 
-            Fahrzeug fahrzeug;
+            Fahrzeug fahrzeug = null;
             if (pkw) 
             {
                 Console.Write("Gehört das PKW zu der Ober-/ Mittel-/ Kompaktklasse? (1 - Ober, 2 - Mittel, 3 - Kompakt) ");
@@ -92,7 +92,11 @@ namespace Projekt_Autovermieten
                 if (lkw) fahrzeug = ErstelleUeber35Befehl.erstelleUeber35();
                 else fahrzeug = ErstelleBis35Befehl.erstelleBis35(); 
             }
+
+            if (fahrzeug != null)
+                fahrzeuge.Add(fahrzeug);
         }
+
         private static void fahrzeugeAnzeigen(List<Fahrzeug> fahrzeuge)
         {
             foreach (var fahrzeug in fahrzeuge)
@@ -104,7 +108,7 @@ namespace Projekt_Autovermieten
             }
         }
 
-        private static void erstelleKunde()
+        private static void erstelleKunde(List<Kunde> kunden)
         {
             Console.Write("Soll der Kunde ein Privatkunde sein? (y/n) ");
             bool privatKunde = Console.ReadLine().ToLower().Equals("y");
@@ -112,6 +116,8 @@ namespace Projekt_Autovermieten
             Kunde kunde;
             if (privatKunde) kunde = ErstellePrivatkundeBefehl.erstellePrivatkunde();
             else kunde = ErstelleFirmenkundeBefehl.erstelleFirmenkunde();
+
+            kunden.Add(kunde);
         }
 
     }
